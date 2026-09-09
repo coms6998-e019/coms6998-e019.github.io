@@ -90,13 +90,11 @@ h3 {
 
 p {
   margin: 0 0 var(--sp-05);
-  max-width: 76ch;
 }
 
 ul {
   margin: 0 0 var(--sp-05);
   padding-left: var(--sp-06);
-  max-width: 76ch;
 }
 
 li {

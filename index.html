@@ -156,16 +156,24 @@
           listed in the <a href="#schedule">schedule</a> under the week that
           assigns them. Read the named section, not the whole paper. Three books
           serve as companions:
-          <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/">Designing Data-Intensive Applications</a>
-          (2nd ed.) for data systems,
-          <a href="https://www.oreilly.com/library/view/kubernetes-up-and/9781098110192/">Kubernetes: Up and Running</a>
-          (3rd ed.) for deployment, and Poole and Mackworth's
-          <a href="https://artint.info/3e/html/ArtInt3e.Ch2.html">Foundations of Computational Agents</a>,
-          free online, whose chapter 2 gives the pre-LLM vocabulary for
-          controller, environment, and belief state. Huyen's
-          <a href="https://www.oreilly.com/library/view/ai-engineering/9781098166298/">AI Engineering</a>
-          chapter 6 is optional background.
         </p>
+        <ul>
+          <li>
+            <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/">Designing Data-Intensive Applications</a>
+            (2nd ed.), for data systems: measurement and reliability, service
+            interfaces, durable workflows, and partial failure.
+          </li>
+          <li>
+            <a href="https://www.manning.com/books/kubernetes-in-action-second-edition">Kubernetes in Action</a>
+            (2nd ed.), for deployment: Pods, Services, probes, and storage.
+          </li>
+          <li>
+            Poole and Mackworth,
+            <a href="https://artint.info/3e/html/ArtInt3e.Ch2.html">Foundations of Computational Agents</a>,
+            free online: chapter 2 gives the pre-LLM vocabulary for controller,
+            environment, and belief state.
+          </li>
+        </ul>
       </div>
 
       <!-- Coursework -->
@@ -177,9 +185,10 @@
             Three team assignments build one agent incrementally. Each is graded
             once after submission. Full briefs are released with each
             assignment; deadlines are in the <a href="#schedule">schedule</a>
-            &mdash; HW1 is due before class, HW2 and HW3 at the end of the
+            <b>&mdash; HW1 is due before class, HW2 and HW3 at the end of the
             meeting day. Assignment topics below are tentative and will be
-            filled out before release; the HW2 and HW3 deadlines are tentative.
+            filled out before release; the HW2 and HW3 deadlines are
+            tentative.</b>
           </p>
           <ul>
             <li>
@@ -208,8 +217,14 @@
               <b>HW2</b>: Tool interfaces and coordinated execution
               <ul>
                 <li>
-                  Expose two read-only CLDK operations through an MCP server and
-                  connect the agent to it.
+                  Wrap CLDK as an MCP server: expose its analysis surface as
+                  tools, not a hand-picked pair of operations, and connect the
+                  agent to it.
+                </li>
+                <li>
+                  Compare that structured-tool interface against a CodeAct-style
+                  code-action interface over the same analyses, and say which
+                  operations each one makes cheap or awkward.
                 </li>
                 <li>
                   Organize the application into explicit stages with conditional
@@ -222,8 +237,8 @@
                   paths.
                 </li>
                 <li>
-                  Optional: guard the tool boundary against prompt injection and
-                  similar abuse, for example with
+                  Guard the tool boundary against prompt injection and similar
+                  abuse, for example with
                   <a href="https://docs.arcjet.com">Arcjet</a>.
                 </li>
               </ul>
@@ -246,8 +261,8 @@
                   job. Its report is the final project report.
                 </li>
                 <li>
-                  Optional: repeat the experiment on a larger application to see
-                  how the design scales up.
+                  Repeat the experiment on a larger application and report how
+                  the design scales up.
                 </li>
               </ul>
             </li>
@@ -290,6 +305,7 @@
               <tr><td>Final exam</td><td class="num">20%</td></tr>
             </tbody>
           </table>
+          <h3>Rubric</h3>
           <p>
             Each homework is marked out of 20 on four criteria worth 5 points
             each: systems design and claim, experimental design, evidence and
