@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Columbia COMS 6998-019 | Design of Production Agentic Systems</title>
+    <meta
+      name="description"
+      content="Official course website for Columbia COMS 6998-019: Design of Production Agentic Systems (Fall 2026), including logistics, schedule, homework, and readings."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="COMS 6998-019 Staff" />
+    <link rel="canonical" href="https://coms6998-e019.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Columbia COMS 6998-019 | Design of Production Agentic Systems" />
+    <meta
+      property="og:description"
+      content="Official course website for Columbia COMS 6998-019: Design of Production Agentic Systems (Fall 2026), including logistics, schedule, homework, and readings."
+    />
+    <meta property="og:url" content="https://coms6998-e019.github.io/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- IBM Plex, the Carbon Design System type family -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-to-content" href="#main-content">Skip to main content</a>
+    <header class="shell" role="banner">
+      <a class="shell__name" href="/">
+        <span class="shell__prefix">Columbia</span> COMS 6998-019
+      </a>
+      <nav class="shell__nav" aria-label="Sections">
+        <a href="#content">Content</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#schedule">Schedule</a>
+      </nav>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <div id="masthead">
+        <h1>COMS 6998-019: Design of Production Agentic Systems</h1>
+        <p class="term-line">Columbia / Fall 2026</p>
+      </div>
+
+      <!-- Staff -->
+      <div class="section" id="people">
+        <h2>Course Staff</h2>
+        <div class="staff-group">
+          <div class="staff">
+            <div class="avatar" aria-hidden="true">RK</div>
+            <div class="staff__name">Rahul Krishna</div>
+            <div class="staff__role">Instructor</div>
+          </div>
+          <div class="staff">
+            <div class="avatar" aria-hidden="true">TA</div>
+            <div class="staff__name tba">TBA</div>
+            <div class="staff__role">Teaching Assistant</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logistics -->
+      <div class="section-layer">
+        <div class="section" id="logistics">
+          <h2>Logistics</h2>
+          <ul>
+            <li>
+              <b>Lectures:</b> Fridays 2:10&ndash;4:00pm, September 11 &ndash;
+              December 11, 2026, in <b>Hamilton 303</b>.
+            </li>
+            <li>
+              <b>Exams:</b> midterm in class Friday, October 23; final exam
+              Thursday, December 17.
+            </li>
+            <li>
+              <b>Office hours:</b> Rahul Krishna, Fridays 12:00&ndash;1:30pm.
+              Email
+              <a href="mailto:rk3080@columbia.edu"><i>rk3080@columbia.edu</i></a>
+              to arrange another time.
+            </li>
+            <li>
+              <b>Contact:</b> ask all course-related questions in the course
+              discussion channel (<span class="tba">link TBA</span>). All
+              announcements are made there. Email
+              <a href="mailto:rk3080@columbia.edu"><i>rk3080@columbia.edu</i></a>
+              for personal matters.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="section" id="content">
+        <h2>Content</h2>
+        <h3>What is this course about?</h3>
+        <p>
+          An agent is a system: a model proposes work, a runtime executes it
+          through tools, state connects the steps, and the whole thing runs on
+          infrastructure that fails. This course treats agents as a
+          systems-engineering problem rather than a prompting problem. Teams
+          build one application over the semester &mdash; a security-alert
+          triage agent that inspects a pinned repository and returns structured,
+          evidence-backed findings &mdash; and each unit adds a constraint that
+          forces a redesign: bounded execution and token budgets, tool contracts
+          and
+          <a href="https://modelcontextprotocol.io/docs/learn/architecture">MCP</a>
+          servers backed by
+          <a href="https://github.com/codellm-devkit">CLDK</a>,
+          dependency-aware concurrency, context compaction and durable
+          checkpoints, and finally deployment on a local Kubernetes cluster with
+          measured recovery from a restart.
+        </p>
+        <p>
+          Each week teaches a systems concept and you implement that concept in
+          the agent you already have. The lecture surveys several related ideas;
+          the implementation obligation is one central mechanism, not every
+          technique discussed.
+        </p>
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>
+            <b>Proficiency in Python</b>
+            <p>
+              Course examples and the supported stack are Python. You will
+              write, instrument, and debug one growing codebase across the
+              semester with minimal scaffolding.
+            </p>
+          </li>
+          <li>
+            <b>Working familiarity with LLM APIs</b>
+            <p>
+              You should have called a messages or chat-completion API with tool
+              definitions before, or be ready to pick that up in week 1.
+            </p>
+          </li>
+          <li>
+            <b>Basic systems background</b>
+            <p>
+              Processes, networking, containers, and databases at the level of
+              an undergraduate systems course. Kubernetes is taught in the
+              course; prior exposure helps but is not required.
+            </p>
+          </li>
+        </ul>
+        <p>
+          This is an implementation-heavy course, and teams own one codebase all
+          semester, so please allocate enough time for it.
+        </p>
+        <h3>Books and readings</h3>
+        <p>
+          There is no authoritative textbook on LLM agent systems yet, so the
+          course runs on papers, systems texts, and engineering write-ups, all
+          listed in the <a href="#schedule">schedule</a> under the week that
+          assigns them. Read the named section, not the whole paper. Three books
+          serve as companions:
+          <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/">Designing Data-Intensive Applications</a>
+          (2nd ed.) for data systems,
+          <a href="https://www.oreilly.com/library/view/kubernetes-up-and/9781098110192/">Kubernetes: Up and Running</a>
+          (3rd ed.) for deployment, and Poole and Mackworth's
+          <a href="https://artint.info/3e/html/ArtInt3e.Ch2.html">Foundations of Computational Agents</a>,
+          free online, whose chapter 2 gives the pre-LLM vocabulary for
+          controller, environment, and belief state. Huyen's
+          <a href="https://www.oreilly.com/library/view/ai-engineering/9781098166298/">AI Engineering</a>
+          chapter 6 is optional background.
+        </p>
+      </div>
+
+      <!-- Coursework -->
+      <div class="section-layer">
+        <div class="section" id="coursework">
+          <h2>Coursework</h2>
+          <h3>Homework</h3>
+          <p>
+            Three team assignments build one agent incrementally. Each is graded
+            once after submission. Full briefs are released with each
+            assignment; deadlines are in the <a href="#schedule">schedule</a>
+            &mdash; HW1 is due before class, HW2 and HW3 at the end of the
+            meeting day. Assignment topics below are tentative and will be
+            filled out before release; the HW2 and HW3 deadlines are tentative.
+          </p>
+          <ul>
+            <li>
+              <b>HW1</b>: Bounded agent execution
+              <ul>
+                <li>
+                  Build a sequential reactive agent that triages one JSON alert
+                  against a pinned repository with local search/read tools and
+                  returns a structured TP/FP/Other finding with evidence
+                  references.
+                </li>
+                <li>
+                  Add a configurable per-run token budget: pre-call admission
+                  with an output allowance, post-call reconciliation of reported
+                  usage, and an explicit exhaustion outcome.
+                </li>
+                <li>
+                  Experiment: one normal run and one scripted exhaustion run,
+                  showing the runtime refuses an unaffordable invocation. The
+                  report also explains your architecture and state model and
+                  compares alternative architectures analytically.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>HW2</b>: Tool interfaces and coordinated execution
+              <ul>
+                <li>
+                  Expose two read-only CLDK operations through an MCP server and
+                  connect the agent to it.
+                </li>
+                <li>
+                  Organize the application into explicit stages with conditional
+                  routing, and parallelize one independent read-only section
+                  under a bounded concurrency limit.
+                </li>
+                <li>
+                  Experiment: the same fixed work run sequentially and
+                  concurrently. The report also compares the direct and MCP tool
+                  paths.
+                </li>
+                <li>
+                  Optional: guard the tool boundary against prompt injection and
+                  similar abuse, for example with
+                  <a href="https://docs.arcjet.com">Arcjet</a>.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>HW3</b>: Recoverable integrated prototype
+              <ul>
+                <li>
+                  Add one context-compaction mechanism that keeps artifact
+                  references and source identity; persist run, progress, and
+                  accounting state; checkpoint one completed stage.
+                </li>
+                <li>
+                  Deploy the agent and MCP server on a local KIND cluster using
+                  the supplied deployment and storage examples.
+                </li>
+                <li>
+                  Experiment: one uninterrupted run and one run interrupted by a
+                  Pod restart at a committed checkpoint, resumed as the same
+                  job. Its report is the final project report.
+                </li>
+                <li>
+                  Optional: repeat the experiment on a larger application to see
+                  how the design scales up.
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h3>Exams</h3>
+          <ul>
+            <li>
+              <b>Midterm</b> (October 23): one hour, individual, closed book.
+              Covers units 1&ndash;2 &mdash; dynamic control, token accounting
+              and admission, tool contracts, action representation, scheduling
+              tradeoffs, and agentic security at the tool boundary.
+            </li>
+            <li>
+              <b>Final</b> (December 17): individual, closed book. Emphasizes
+              context, state, and recovery &mdash; checkpoint placement,
+              compaction-related information loss, state ownership, duplicate
+              effects, and recovery timelines &mdash; while connecting earlier
+              units.
+            </li>
+          </ul>
+          <p>
+            Both exams ask you to reason about scenarios. Neither tests
+            framework API memorization.
+          </p>
+
+          <h3>Grading</h3>
+          <table class="data-table data-table--compact">
+            <thead>
+              <tr>
+                <th>Assessment</th>
+                <th class="num">Weight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>HW1: Bounded agent execution</td><td class="num">20%</td></tr>
+              <tr><td>HW2: Tool interfaces and coordinated execution</td><td class="num">20%</td></tr>
+              <tr><td>HW3: Recoverable integrated prototype</td><td class="num">20%</td></tr>
+              <tr><td>Midterm</td><td class="num">20%</td></tr>
+              <tr><td>Final exam</td><td class="num">20%</td></tr>
+            </tbody>
+          </table>
+          <p>
+            Each homework is marked out of 20 on four criteria worth 5 points
+            each: systems design and claim, experimental design, evidence and
+            reproducibility, and interpretation and limitations. A sound
+            experiment earns full credit without a speedup, a token reduction,
+            or a confirmed hypothesis; a missing required mechanism does not.
+          </p>
+
+          <h3>Submitting coursework</h3>
+          <ul>
+            <li>
+              Homework is done in teams. Submit your codebase, a two-page report
+              with one main results table or figure, and reproducible run
+              instructions.
+            </li>
+            <li>
+              Include configuration, pinned dependencies, snapshots, raw logs,
+              and a short contribution statement.
+            </li>
+            <li>
+              The supported stack is the one used in lecture
+              (<a href="https://docs.langchain.com/oss/python/langgraph/workflows-agents">LangGraph</a>);
+              another framework is fine if it meets the same behavioral
+              expectations.
+            </li>
+            <li>
+              <b>Late days:</b> each student has 6 late days for the semester,
+              and may use at most 3 on any one assignment. A late day extends a
+              deadline by 24 hours.
+            </li>
+          </ul>
+
+          <h3>Academic integrity</h3>
+          <p>
+            All work is subject to the
+            <a href="https://www.cs.columbia.edu/academic/academic-honesty/"
+              >Columbia Computer Science academic honesty policy</a>. Teams must
+            be able to explain every part of what they submit; the individual
+            exams test that.
+          </p>
+          <p>
+            <b>AI tools:</b> using an AI assistant to learn &mdash; explaining a
+            concept, debugging your own code, reviewing a design &mdash; is
+            permitted, and so is scoped autocomplete. Handing an assignment to
+            an agent and submitting what it produces is not: it removes the
+            practice this course is built on. You remain responsible for
+            every line you submit.
+          </p>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div class="section" id="schedule">
+        <h2>
+          Schedule
+          <span class="schedule-note">(weekly topics may change slightly)</span>
+        </h2>
+        <p class="legend">
+          <span class="legend__item"><span class="key u1"></span>Weeks 1&ndash;3: agent architectures and control</span>
+          <span class="legend__item"><span class="key u2"></span>Weeks 4&ndash;6: tool interfaces and concurrency</span>
+          <span class="legend__item"><span class="key u3"></span>Weeks 8&ndash;9: context, state, and persistence</span>
+          <span class="legend__item"><span class="key u4"></span>Weeks 10&ndash;12: deployment, recovery, and observability</span>
+        </p>
+        <table class="data-table" id="schedule-table">
+          <colgroup>
+            <col style="width: 5%" />
+            <col style="width: 13%" />
+            <col style="width: 37%" />
+            <col style="width: 25%" />
+            <col style="width: 20%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Reading</th>
+              <th>Deadlines</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="u1">
+              <td>1</td>
+              <td>Fri Sep 11</td>
+              <td>Map the system: model, controller, tools, state, environment; one alert-to-finding trace</td>
+              <td>
+                <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a>;
+                <a href="https://artint.info/3e/html/ArtInt3e.Ch2.html">Poole &amp; Mackworth</a> &sect;&sect;2.1&ndash;2.3;
+                <a href="https://arxiv.org/abs/2309.02427">CoALA</a> &sect;4
+              </td>
+              <td>Teams and repositories set up</td>
+            </tr>
+            <tr class="u1">
+              <td>2</td>
+              <td>Fri Sep 18</td>
+              <td>Agent architectures, state, and dynamic control flow: fixed workflows, ReAct, plan&ndash;execute; who chooses the next operation</td>
+              <td>
+                <a href="https://arxiv.org/abs/2210.03629">ReAct</a> &sect;2;
+                <a href="https://docs.langchain.com/oss/python/langgraph/workflows-agents">LangGraph workflows and agents</a>;
+                <a href="https://arxiv.org/abs/2303.11366">Reflexion</a> &sect;3
+              </td>
+              <td>HW1 <span class="pill pill-out">out</span></td>
+            </tr>
+            <tr class="u1">
+              <td>3</td>
+              <td>Fri Sep 25</td>
+              <td>Termination, token budgets, and controlled measurement: admission versus accounting, output reservations, exhaustion outcomes</td>
+              <td>
+                <a href="https://platform.claude.com/docs/en/build-with-claude/token-counting">Token counting</a>;
+                <a href="https://arxiv.org/abs/2407.01502">AI Agents That Matter</a> &sect;&sect;3&ndash;4;
+                <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/">DDIA2</a> ch. 2
+              </td>
+              <td></td>
+            </tr>
+            <tr class="u2">
+              <td>4</td>
+              <td>Fri Oct 2</td>
+              <td>Tool contracts and execution boundaries: schemas, validation, discovery, local dispatch versus RPC, transport versus domain failures</td>
+              <td>
+                <a href="https://modelcontextprotocol.io/docs/learn/architecture">MCP architecture</a>;
+                <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works">native tool use</a>;
+                <a href="https://arxiv.org/abs/2305.15334">Gorilla</a> &sect;3.3
+              </td>
+              <td>
+                HW1 <span class="pill pill-due">due</span>
+                <br />
+                HW2 <span class="pill pill-out">out</span>
+              </td>
+            </tr>
+            <tr class="u2">
+              <td>5</td>
+              <td>Fri Oct 9</td>
+              <td>Action composition and dependency-aware workflows: stage contracts, dependency DAGs, fork/join, bounded fan-out, critical paths</td>
+              <td>
+                <a href="https://arxiv.org/html/2312.04511v3">LLMCompiler</a> fig. 2, &sect;&sect;3.1&ndash;3.3;
+                <a href="https://arxiv.org/html/2402.01030v4">CodeAct</a> &sect;2.1;
+                <a href="https://arxiv.org/abs/2412.07017">AsyncLM</a> &sect;3 (optional)
+              </td>
+              <td></td>
+            </tr>
+            <tr class="u2">
+              <td>6</td>
+              <td>Fri Oct 16</td>
+              <td>Controlled execution experiments: sequential and concurrent timelines, dependency stalls, overhead, one failure trace. Agentic security: guarding the tool boundary against prompt injection and abuse</td>
+              <td>
+                <a href="https://arxiv.org/abs/2302.12173">Indirect prompt injection</a> &sect;3;
+                <a href="https://arxiv.org/abs/2506.08837">Design patterns for securing agents</a> &sect;3;
+                <a href="https://docs.arcjet.com/">Arcjet docs</a>;
+                <a href="https://arxiv.org/abs/2503.18813">CaMeL</a> &sect;5 (optional)
+              </td>
+              <td>HW2 <span class="pill pill-due">due</span></td>
+            </tr>
+            <tr class="exam">
+              <td>7</td>
+              <td>Fri Oct 23</td>
+              <td><b>Midterm exam</b> (in class, one hour). No lecture</td>
+              <td>Review weeks 1&ndash;6</td>
+              <td><span class="pill pill-exam">midterm</span></td>
+            </tr>
+            <tr class="u3">
+              <td>8</td>
+              <td>Fri Oct 30</td>
+              <td>Context working sets, compaction, and provenance: selection versus lossy summarization, artifact references, source identity</td>
+              <td>
+                <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Context engineering</a>;
+                <a href="https://arxiv.org/abs/2310.08560">MemGPT</a> &sect;2;
+                <a href="https://aclanthology.org/2024.tacl-1.9.pdf">Lost in the Middle</a> (optional)
+              </td>
+              <td></td>
+            </tr>
+            <tr class="u3">
+              <td>9</td>
+              <td>Fri Nov 6</td>
+              <td>State ownership, checkpointing, and resumption: run-local versus durable state, checkpoint boundaries, replay</td>
+              <td>
+                LangGraph
+                <a href="https://docs.langchain.com/oss/python/langgraph/persistence">persistence</a>
+                and
+                <a href="https://docs.langchain.com/oss/python/langgraph/checkpointers">checkpointers</a>;
+                <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2021/10/DF-Semantics-Final.pdf">Durable Functions</a> &sect;&sect;2.1&ndash;2.2, 3.5
+              </td>
+              <td></td>
+            </tr>
+            <tr class="u4">
+              <td>10</td>
+              <td>Fri Nov 13</td>
+              <td>Deployment and service lifecycle: reconciliation, Pods and Services, readiness and liveness, ephemeral versus persistent storage</td>
+              <td>
+                <a href="https://kubernetes.io/docs/concepts/workloads/pods/probes/">Kubernetes probes</a>;
+                <a href="https://kind.sigs.k8s.io/docs/user/quick-start/">KIND quick start</a>
+              </td>
+              <td>HW3 <span class="pill pill-out">out</span></td>
+            </tr>
+            <tr class="u4">
+              <td>11</td>
+              <td>Fri Nov 20</td>
+              <td>Partial failure and bounded recovery: deadlines, retry amplification, backoff, idempotent writes, uncertain outcomes</td>
+              <td>
+                <a href="https://sre.google/sre-book/addressing-cascading-failures/">SRE: cascading failures</a>;
+                <a href="https://sigops.org/s/conferences/hotos/2021/papers/hotos21-s11-bronson.pdf">Metastable failures</a> &sect;&sect;1, 2.1;
+                <a href="https://www.cidrdb.org/cidr2007/papers/cidr07p15.pdf">Life beyond distributed transactions</a> &sect;5;
+                <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/">DDIA2</a> ch. 9
+              </td>
+              <td></td>
+            </tr>
+            <tr class="brk">
+              <td></td>
+              <td>Fri Nov 27</td>
+              <td><i>No class (Thanksgiving break)</i></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="u4">
+              <td>12</td>
+              <td>Fri Dec 4</td>
+              <td>Observability and recovery measurement: correlated events, service signals, end-to-end latency, completed versus repeated work</td>
+              <td>
+                <a href="https://sre.google/sre-book/monitoring-distributed-systems/">SRE: monitoring</a>;
+                <a href="https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/">Dapper</a> &sect;&sect;2.1&ndash;2.3;
+                <a href="https://research.google/pubs/the-tail-at-scale/">The Tail at Scale</a>
+              </td>
+              <td></td>
+            </tr>
+            <tr class="studio">
+              <td>13</td>
+              <td>Fri Dec 11</td>
+              <td>Integration studio: trace one job end to end across components, identify limitations, fix integration defects</td>
+              <td>
+                Your team's reports and traces;
+                <a href="https://arxiv.org/abs/2411.00640">Adding error bars to evals</a>;
+                <a href="https://arxiv.org/abs/2406.12045">&tau;-bench</a> (optional)
+              </td>
+              <td>HW3 <span class="pill pill-due">due</span></td>
+            </tr>
+            <tr class="exam">
+              <td>14</td>
+              <td>Thu Dec 17</td>
+              <td><b>Final exam</b> (individual, closed book). No regular class</td>
+              <td>Review weeks 1&ndash;13</td>
+              <td><span class="pill pill-exam">final exam</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer class="footer">
+      COMS 6998-019 &middot; Columbia University &middot; Fall 2026
+    </footer>
+  </body>
+</html>

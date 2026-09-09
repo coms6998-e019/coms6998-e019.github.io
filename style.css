@@ -1,0 +1,573 @@
+/* COMS 6998-019 course site.
+   Styled after the IBM Carbon Design System: IBM Plex type, Carbon color
+   tokens, the 8px spacing scale, square corners, and Carbon's data-table,
+   tag, link, and UI-shell patterns. Written against the token values so the
+   page ships as two static files with no framework. */
+
+:root {
+  /* Carbon color tokens, White theme */
+  --background: #ffffff;
+  --layer-01: #f4f4f4;
+  --layer-02: #ffffff;
+  --layer-hover: #e8e8e8;
+  --layer-accent-01: #e0e0e0;
+  --border-subtle: #e0e0e0;
+  --text-primary: #161616;
+  --text-secondary: #525252;
+  --text-helper: #6f6f6f;
+  --text-on-color: #ffffff;
+  --link-primary: #0f62fe;
+  --link-primary-hover: #0043ce;
+  --focus: #0f62fe;
+
+  /* Carbon UI shell */
+  --shell-bg: #161616;
+  --shell-border: #393939;
+  --shell-text: #f4f4f4;
+  --shell-height: 48px;
+
+  /* Course-unit accents from the Carbon 60 ramp */
+  --u1: #0f62fe;
+  --u2: #007d79;
+  --u3: #8a3ffc;
+  --u4: #ba4e00;
+  --u-exam: #a56eff;
+  --u-studio: #6f6f6f;
+
+  /* Carbon spacing scale */
+  --sp-03: 8px;
+  --sp-04: 12px;
+  --sp-05: 16px;
+  --sp-06: 24px;
+  --sp-07: 32px;
+  --sp-08: 40px;
+  --sp-09: 48px;
+  --sp-10: 64px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding-top: var(--shell-height);
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Type scale (Carbon productive styles) ---------- */
+
+h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 300;
+  margin: 0 0 var(--sp-05);
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.29;
+  font-weight: 400;
+  margin: 0 0 var(--sp-06);
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 400;
+  margin: var(--sp-07) 0 var(--sp-04);
+}
+
+p {
+  margin: 0 0 var(--sp-05);
+  max-width: 76ch;
+}
+
+ul {
+  margin: 0 0 var(--sp-05);
+  padding-left: var(--sp-06);
+  max-width: 76ch;
+}
+
+li {
+  margin-bottom: var(--sp-03);
+}
+
+li ul {
+  margin-top: var(--sp-03);
+  margin-bottom: var(--sp-04);
+}
+
+li p {
+  margin: var(--sp-03) 0 0;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: var(--link-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-primary-hover);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.tba {
+  color: var(--text-helper);
+  font-style: italic;
+}
+
+/* ---------- UI shell header ---------- */
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-to-content:focus {
+  left: var(--sp-05);
+  top: var(--sp-05);
+  z-index: 20;
+  padding: var(--sp-03) var(--sp-05);
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+.shell {
+  /* Carbon themes the UI shell as g100, where the focus token is white */
+  --focus: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-05);
+  height: var(--shell-height);
+  padding-left: var(--sp-05);
+  background-color: var(--shell-bg);
+  border-bottom: 1px solid var(--shell-border);
+}
+
+.shell__name {
+  color: var(--shell-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.shell__name:hover {
+  color: var(--shell-text);
+}
+
+.shell__prefix {
+  font-weight: 400;
+}
+
+.shell__nav {
+  display: flex;
+  height: 100%;
+}
+
+.shell__nav a {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-05);
+  color: #c6c6c6;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.shell__nav a:hover {
+  background-color: #292929;
+  color: var(--shell-text);
+}
+
+.shell__nav a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+/* ---------- Layout ---------- */
+
+#masthead {
+  padding: var(--sp-10) var(--sp-05) var(--sp-08);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+#masthead h1,
+#masthead .term-line {
+  /* the 1312px measure less the masthead's own side padding */
+  max-width: calc(1312px - var(--sp-05) * 2);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section,
+.footer {
+  max-width: 1312px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.term-line {
+  color: var(--text-secondary);
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.section {
+  padding: var(--sp-09) var(--sp-05);
+  scroll-margin-top: var(--shell-height);
+}
+
+.section-layer {
+  background-color: var(--layer-01);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer {
+  padding: var(--sp-07) var(--sp-05) var(--sp-09);
+  color: var(--text-helper);
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.32px;
+}
+
+/* ---------- Staff ---------- */
+
+.staff-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-06);
+}
+
+.staff {
+  flex: 0 0 160px;
+  font-size: 14px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  margin-bottom: var(--sp-04);
+  background-color: var(--u1);
+  color: var(--text-on-color);
+  font-size: 20px;
+  text-align: center;
+}
+
+.staff__name {
+  font-weight: 600;
+}
+
+.staff__role {
+  color: var(--text-secondary);
+}
+
+/* ---------- Data table (Carbon) ---------- */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: var(--sp-07);
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.16px;
+  background-color: var(--layer-02);
+}
+
+.data-table--compact {
+  max-width: 520px;
+}
+
+.data-table thead th {
+  position: sticky;
+  top: var(--shell-height);
+  z-index: 2;
+  height: 48px;
+  padding: var(--sp-03) var(--sp-05);
+  background-color: var(--layer-accent-01);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  vertical-align: middle;
+  letter-spacing: 0.16px;
+}
+
+.data-table td {
+  padding: 14px var(--sp-05) 13px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+  text-align: left;
+}
+
+.data-table tbody tr:hover td {
+  background-color: var(--layer-hover);
+}
+
+.data-table .num {
+  text-align: right;
+}
+
+/* Schedule specifics: unit bands down the left edge */
+
+#schedule-table tbody > tr > td:first-child {
+  border-left: 4px solid transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+#schedule-table tbody > tr > td:nth-child(2) {
+  white-space: nowrap;
+}
+
+#schedule-table tbody > tr.u1 > td:first-child { border-left-color: var(--u1); }
+#schedule-table tbody > tr.u2 > td:first-child { border-left-color: var(--u2); }
+#schedule-table tbody > tr.u3 > td:first-child { border-left-color: var(--u3); }
+#schedule-table tbody > tr.u4 > td:first-child { border-left-color: var(--u4); }
+#schedule-table tbody > tr.studio > td:first-child { border-left-color: var(--u-studio); }
+#schedule-table tbody > tr.exam > td:first-child { border-left-color: var(--u-exam); }
+
+#schedule-table tbody > tr.exam > td {
+  background-color: #f6f2ff;
+}
+
+#schedule-table tbody > tr.brk > td {
+  background-color: var(--layer-01);
+  color: var(--text-helper);
+}
+
+/* ---------- Legend ---------- */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-03) var(--sp-06);
+  max-width: none;
+  margin-bottom: var(--sp-05);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.32px;
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.legend .key {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: var(--sp-03);
+  vertical-align: -1px;
+}
+
+.legend .u1 { background-color: var(--u1); }
+.legend .u2 { background-color: var(--u2); }
+.legend .u3 { background-color: var(--u3); }
+.legend .u4 { background-color: var(--u4); }
+
+.schedule-note {
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* ---------- Tags (Carbon) ---------- */
+
+.pill {
+  display: inline-block;
+  height: 18px;
+  padding: 0 var(--sp-03);
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.32px;
+  white-space: nowrap;
+}
+
+.pill-out {
+  background-color: #a7f0ba;
+  color: #0e6027;
+}
+
+.pill-due {
+  background-color: #ffd7d9;
+  color: #a2191f;
+}
+
+.pill-exam {
+  background-color: #e8daff;
+  color: #6929c4;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 671px) {
+  body {
+    padding-top: calc(var(--shell-height) * 2);
+  }
+
+  .shell {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    height: calc(var(--shell-height) * 2);
+    padding-left: 0;
+  }
+
+  .shell__name {
+    height: var(--shell-height);
+    padding: 0 var(--sp-05);
+    line-height: var(--shell-height);
+  }
+
+  .shell__nav {
+    height: var(--shell-height);
+    border-top: 1px solid var(--shell-border);
+  }
+
+  .shell__nav a {
+    flex: 1;
+    justify-content: center;
+    padding: 0 var(--sp-04);
+  }
+
+  .section {
+    padding: var(--sp-07) var(--sp-05);
+    scroll-margin-top: calc(var(--shell-height) * 2);
+  }
+
+  #masthead {
+    padding: var(--sp-07) var(--sp-05);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  /* Carbon has no small-screen data table, so the schedule becomes cards */
+  #schedule-table,
+  #schedule-table thead,
+  #schedule-table tbody,
+  #schedule-table th,
+  #schedule-table td,
+  #schedule-table tr {
+    display: block;
+  }
+
+  #schedule-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  #schedule-table tbody > tr {
+    margin-bottom: var(--sp-05);
+    border: 1px solid var(--border-subtle);
+    border-left-width: 4px;
+    border-left-style: solid;
+  }
+
+  #schedule-table tbody > tr.u1 { border-left-color: var(--u1); }
+  #schedule-table tbody > tr.u2 { border-left-color: var(--u2); }
+  #schedule-table tbody > tr.u3 { border-left-color: var(--u3); }
+  #schedule-table tbody > tr.u4 { border-left-color: var(--u4); }
+  #schedule-table tbody > tr.studio { border-left-color: var(--u-studio); }
+  #schedule-table tbody > tr.exam { border-left-color: var(--u-exam); }
+  #schedule-table tbody > tr.brk { border-left-color: var(--border-subtle); }
+
+  #schedule-table td {
+    position: relative;
+    padding: var(--sp-03) var(--sp-05) var(--sp-03) 88px;
+    border-bottom: 1px solid var(--layer-01);
+    border-left: none;
+  }
+
+  #schedule-table td:last-child {
+    border-bottom: none;
+  }
+
+  #schedule-table td:empty {
+    display: none;
+  }
+
+  #schedule-table td:before {
+    position: absolute;
+    top: var(--sp-03);
+    left: var(--sp-05);
+    width: 60px;
+    color: var(--text-helper);
+    font-size: 12px;
+    letter-spacing: 0.32px;
+    white-space: nowrap;
+  }
+
+  .data-table thead th {
+    top: calc(var(--shell-height) * 2);
+  }
+
+  #schedule-table tbody > tr > td:nth-of-type(1) {
+    float: right;
+    padding: var(--sp-03) var(--sp-05);
+    border-bottom: none;
+    border-left: none;
+  }
+
+  #schedule-table tbody > tr > td:nth-of-type(2) {
+    padding: var(--sp-03) var(--sp-05);
+    border-bottom: none;
+    font-weight: 600;
+  }
+
+  #schedule-table td:nth-of-type(3) {
+    clear: both;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  #schedule-table td:nth-of-type(3):before { content: "Topic"; }
+  #schedule-table td:nth-of-type(4):before { content: "Reading"; }
+  #schedule-table td:nth-of-type(5):before { content: "Due"; }
+}
