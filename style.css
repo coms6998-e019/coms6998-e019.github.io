@@ -45,6 +45,12 @@
   --sp-10: 64px;
 }
 
+/* The page renders at 125% by default; everything below is authored at
+   100% in Carbon's own token values. */
+:root {
+  zoom: 1.25;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -55,7 +61,6 @@ html {
 
 body {
   margin: 0;
-  padding-top: var(--shell-height);
   background-color: var(--background);
   color: var(--text-primary);
   font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -154,10 +159,8 @@ a:focus-visible {
 .shell {
   /* Carbon themes the UI shell as g100, where the focus token is white */
   --focus: #ffffff;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -387,7 +390,6 @@ main {
 .legend__item {
   display: inline-flex;
   align-items: center;
-  white-space: nowrap;
 }
 
 .legend .key {
@@ -439,11 +441,9 @@ main {
 
 /* ---------- Small screens ---------- */
 
-@media (max-width: 671px) {
-  body {
-    padding-top: calc(var(--shell-height) * 2);
-  }
-
+/* 671px of layout at the page's 1.25 zoom, since media queries are
+   evaluated before element zoom is applied */
+@media (max-width: 838px) {
   .shell {
     flex-direction: column;
     align-items: stretch;
